@@ -5,7 +5,7 @@ function Todolist() {
     <div className="wrapper">
       <ul>
         <li>
-          <div class="left">
+          <div className="left">
             <button>✅</button>
           </div>
           <div className="center">bbb</div>
@@ -14,7 +14,7 @@ function Todolist() {
           </div>
         </li>
         <li>
-          <div class="left">
+          <div className="left">
             <button>◻️</button>
           </div>
           <div className="center">aaa</div>

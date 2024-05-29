@@ -1,14 +1,16 @@
-function Form() {
+function Form({ addTask, newTask }) {
   return (
     <div className="wrapper">
       <header>
         <h3>🔰 TODOLIST </h3>
       </header>
 
-      <div className="input-box">
-        <input type="text" placeholder="Add Your Task" />
-        <button type="submit">Add Task</button>
-      </div>
+      <form className="input-box">
+        <input type="text" ref={newTask} placeholder="Add Your Task" />
+        <button type="submit" onClick={addTask}>
+          Add Task
+        </button>
+      </form>
     </div>
   );
 }
