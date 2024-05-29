@@ -7,6 +7,12 @@ function App() {
   const newTask = useRef("");
   const [tasks, setTasks] = useState([]);
 
+  // membuat id
+  function setId() {
+    const jumlahTask = tasks.length;
+    return jumlahTask + 1;
+  }
+
   function addTask(parameter) {
     parameter.preventDefault();
     // code mewajibkan isi value
@@ -15,18 +21,21 @@ function App() {
       return false;
     }
     const data = {
-      id: 1,
+      id: setId(),
       task: newTask.current.value,
       completed: false,
     };
-    setTasks(data);
-    console.info(tasks);
+    // menghilangkan isi form setelah dikirimkan
+    newTask.current.value = "";
+
+    setTasks([...tasks, data]);
+    // console.info(tasks);
     // console.info(`I'm Clicked, value = ${newTask.current.value} `);
   }
   return (
     <>
       <Form addTask={addTask} newTask={newTask} />
-      <Todolist />
+      <Todolist tasks={tasks} />
     </>
   );
 }
