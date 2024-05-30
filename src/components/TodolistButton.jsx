@@ -1,21 +1,26 @@
 function TodolistButton(props) {
+  // menampilkan emoticon telunjuk atas dan bawah
   let id = props.id;
   let currentIndex = props.tasks.findIndex((item) => item.id == id);
   let prevIndex = currentIndex - 1;
   let nextIndex = currentIndex + 1;
 
+  let prevButton = "";
   if (props.tasks[prevIndex] != undefined) {
-    console.info(`${id} ada previous index`);
-  } else {
-    console.info(`${id} tidak ada previous index`);
+    prevButton = "👆";
+  }
+
+  let nextButton = "";
+  if (props.tasks[nextIndex] != undefined) {
+    nextButton = "👇";
   }
   return (
     <>
       <span>
-        <button>👆</button>
+        <button>{prevButton}</button>
       </span>
       <span>
-        <button>👇</button>
+        <button>{nextButton}</button>
       </span>
       <span>
         <button>🗑️</button>
