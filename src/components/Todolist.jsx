@@ -26,7 +26,7 @@ function Todolist({ tasks, setCompleted }) {
               </div>
               <div className={`center ${classCompleted}`}>{item.task}</div>
               <div className="right">
-                <TodolistButton />
+                <TodolistButton id={item.id} tasks={tasks} />
               </div>
             </li>
           );
