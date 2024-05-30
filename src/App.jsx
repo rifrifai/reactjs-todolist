@@ -32,10 +32,24 @@ function App() {
     // console.info(tasks);
     // console.info(`I'm Clicked, value = ${newTask.current.value} `);
   }
+
+  function setCompleted(id) {
+    let taskItem = [];
+    tasks.map((item, index) => {
+      if (item.id == id) {
+        taskItem[index] = { ...item, completed: !item.completed };
+      } else {
+        taskItem[index] = item;
+      }
+    });
+    setTasks(taskItem);
+    // console.info(tasks);
+  }
+
   return (
     <>
       <Form addTask={addTask} newTask={newTask} />
-      <Todolist tasks={tasks} />
+      <Todolist tasks={tasks} setCompleted={setCompleted} />
     </>
   );
 }

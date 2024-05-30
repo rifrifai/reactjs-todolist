@@ -1,6 +1,6 @@
 import TodolistButton from "./TodolistButton";
 
-function Todolist({ tasks }) {
+function Todolist({ tasks, setCompleted }) {
   // membuat urutan yang terbaru paling atas
   tasks.sort((a, b) => b.id - a.id);
 
@@ -8,12 +8,23 @@ function Todolist({ tasks }) {
     <div className="wrapper">
       <ul>
         {tasks.map((item) => {
+          // let radioCompleted = item.completed == false ? "◻️" : "✅";
+          let classCompleted = "";
+          let radioCompleted = "";
+          if (item.completed == false) {
+            radioCompleted = "◻️";
+          } else {
+            radioCompleted = "✅";
+            classCompleted = "strike";
+          }
           return (
             <li key={item.id}>
               <div className="left">
-                <button>✅</button>
+                <button onClick={() => setCompleted(item.id)}>
+                  {radioCompleted}
+                </button>
               </div>
-              <div className="center">{item.task}</div>
+              <div className={`center ${classCompleted}`}>{item.task}</div>
               <div className="right">
                 <TodolistButton />
               </div>
