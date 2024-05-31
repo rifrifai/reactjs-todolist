@@ -31,7 +31,7 @@ function TodolistButton(props) {
         </button>
       </span>
       <span>
-        <button>🗑️</button>
+        <button onClick={() => props.remove(props.id)}>🗑️</button>
       </span>
     </>
   );

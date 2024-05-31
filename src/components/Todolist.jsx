@@ -1,6 +1,6 @@
 import TodolistButton from "./TodolistButton";
 
-function Todolist({ tasks, setCompleted, move }) {
+function Todolist({ tasks, setCompleted, move, remove }) {
   // membuat urutan yang terbaru paling atas
   tasks.sort((a, b) => b.id - a.id);
 
@@ -26,7 +26,12 @@ function Todolist({ tasks, setCompleted, move }) {
               </div>
               <div className={`center ${classCompleted}`}>{item.task}</div>
               <div className="right">
-                <TodolistButton id={item.id} tasks={tasks} move={move} />
+                <TodolistButton
+                  id={item.id}
+                  tasks={tasks}
+                  move={move}
+                  remove={remove}
+                />
               </div>
             </li>
           );

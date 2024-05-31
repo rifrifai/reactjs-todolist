@@ -56,13 +56,24 @@ function App() {
     // menampilkan data yang dinaik turunkan
     const newData = [...tasks];
     setTasks(newData);
-    console.info(newData);
+  }
+
+  function remove(id) {
+    // membuat yakin hapus?
+    if (window.confirm("Anda yakin?")) {
+      setTasks(tasks.filter((item) => item.id != id));
+    }
   }
 
   return (
     <>
       <Form addTask={addTask} newTask={newTask} />
-      <Todolist tasks={tasks} setCompleted={setCompleted} move={move} />
+      <Todolist
+        tasks={tasks}
+        setCompleted={setCompleted}
+        move={move}
+        remove={remove}
+      />
     </>
   );
 }
