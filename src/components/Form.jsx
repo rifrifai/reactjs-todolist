@@ -1,8 +1,11 @@
-function Form({ addTask, newTask }) {
+function Form({ addTask, newTask, taskCompleted, tasks }) {
   return (
     <div className="wrapper">
       <header>
         <h3>🔰 TODOLIST </h3>
+        <span>
+          {taskCompleted || "0"}/ {tasks.length}
+        </span>
       </header>
 
       <form className="input-box">

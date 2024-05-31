@@ -11,9 +11,14 @@ function App() {
     return JSON.parse(localStorage.getItem(storage)) || [];
   });
 
+  const [taskCompleted, setTaskCompleted] = useState(0);
+
   // agar ketika direfresh data tidak hilang
   useEffect(() => {
     localStorage.setItem(storage, JSON.stringify(tasks));
+    // menampilkan total task yang telah dikerjakan 1/3
+    const complete = tasks.filter((item) => item.completed == true).length;
+    setTaskCompleted(complete);
   }, [tasks]);
 
   // membuat id
@@ -85,7 +90,12 @@ function App() {
 
   return (
     <>
-      <Form addTask={addTask} newTask={newTask} />
+      <Form
+        addTask={addTask}
+        newTask={newTask}
+        taskCompleted={taskCompleted}
+        tasks={tasks}
+      />
       <Todolist
         tasks={tasks}
         setCompleted={setCompleted}
