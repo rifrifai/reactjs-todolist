@@ -46,10 +46,17 @@ function App() {
     // console.info(tasks);
   }
 
+  function move(currentIndex, updateIndex) {
+    const currentData = tasks[currentIndex];
+    const updateData = tasks[updateIndex];
+
+    tasks[currentIndex] = { ...currentData, id: updateData.id };
+  }
+
   return (
     <>
       <Form addTask={addTask} newTask={newTask} />
-      <Todolist tasks={tasks} setCompleted={setCompleted} />
+      <Todolist tasks={tasks} setCompleted={setCompleted} move={move} />
     </>
   );
 }
