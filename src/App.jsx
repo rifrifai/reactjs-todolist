@@ -51,6 +51,12 @@ function App() {
     const updateData = tasks[updateIndex];
 
     tasks[currentIndex] = { ...currentData, id: updateData.id };
+    tasks[updateIndex] = { ...updateData, id: currentData.id };
+
+    // menampilkan data yang dinaik turunkan
+    const newData = [...tasks];
+    setTasks(newData);
+    console.info(newData);
   }
 
   return (
