@@ -9,8 +9,14 @@ function App() {
 
   // membuat id
   function setId() {
-    const jumlahTask = tasks.length;
-    return jumlahTask + 1;
+    // ketika remove agar id tidak sama
+    if (tasks == "") {
+      return 1;
+    } else {
+      return tasks[0].id + 1;
+    }
+    // const jumlahTask = tasks.length;
+    // return jumlahTask + 1;
   }
 
   function addTask(parameter) {
