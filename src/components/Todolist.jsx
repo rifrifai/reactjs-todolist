@@ -24,9 +24,7 @@ function Todolist({ tasks, setCompleted, move, remove }) {
                   {radioCompleted}
                 </button>
               </div>
-              <div className={`center ${classCompleted}`}>
-                {item.task} - {item.id}
-              </div>
+              <div className={`center ${classCompleted}`}>{item.task}</div>
               <div className="right">
                 <TodolistButton
                   id={item.id}

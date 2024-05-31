@@ -1,11 +1,20 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import Todolist from "./components/Todolist";
 
 function App() {
   const newTask = useRef("");
-  const [tasks, setTasks] = useState([]);
+  const storage = "todolist_App";
+  const [tasks, setTasks] = useState(() => {
+    // agar ketika direfresh data tidak hilang
+    return JSON.parse(localStorage.getItem(storage)) || [];
+  });
+
+  // agar ketika direfresh data tidak hilang
+  useEffect(() => {
+    localStorage.setItem(storage, JSON.stringify(tasks));
+  }, [tasks]);
 
   // membuat id
   function setId() {
@@ -19,6 +28,7 @@ function App() {
     // return jumlahTask + 1;
   }
 
+  // mengisi task
   function addTask(parameter) {
     parameter.preventDefault();
     // code mewajibkan isi value
@@ -52,6 +62,7 @@ function App() {
     // console.info(tasks);
   }
 
+  // menaikan task ke atas or kebawah
   function move(currentIndex, updateIndex) {
     const currentData = tasks[currentIndex];
     const updateData = tasks[updateIndex];
@@ -64,6 +75,7 @@ function App() {
     setTasks(newData);
   }
 
+  // menghapus task
   function remove(id) {
     // membuat yakin hapus?
     if (window.confirm("Anda yakin?")) {
